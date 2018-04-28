@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block head_title %} {{instance.title}} | {{block.super}} {% endblock head_title %} 
+{% block content %}
+
+<style>
+    .share{
+        text-align: right;
+    }
+    .fa {
+        font-size: 30px;
+        width: 50px;
+        text-align: right;
+    }
+    .flex-column{
+        padding-top:30px;
+    }
+    .logo{
+        height: 75px;
+        width: 150px;
+}
+    .title{
+        text-align: center;
+    }
+    .img-fluid{
+        align-content: center;
+    }
+    .detail-img{
+        margin: 0 auto;
+    }
+    .img-grid {
+        display: grid;
+    }
+    .container-fluid, .btn-outline-secondary{
+        margin-top: 25px;
+    }
+</style>
+
+<header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-4 pt-1">
+            <img src="https://i.pinimg.com/originals/42/39/26/4239264d0a34c82c00bb8cc7367f9cc8.jpg" class="logo">
+          </div>
+          <div class="col-4 text-center">
+            <a class="blog-header-logo text-dark" href="/"> <h2>Lorem BlogSpace</h2></a>
+          </div>
+          <!-- <div class="col-4 d-flex justify-content-end align-items-center">
+            <a class="text-muted" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"><circle cx="10.5" cy="10.5" r="7.5"></circle><line x1="21" y1="21" x2="15.8" y2="15.8"></line></svg>
+            </a>
+          </div> -->
+        </div>
+      </header>
+<hr>
+<div class="flex-column " >
+    <a href="/posts/{{instance.id}}/" class="title"> <h2>{{ instance.title }}</h2></a>
+    <div class="img-grid">
+        {% if instance.image %}
+          <img src="{{ instance.image.url }}" class="img-fluid rounded detail-img">
+        {% endif %}
+    </div>
+    <small>Last Updated: {{instance.updated}}</small>
+
+    <div class="container-fluid">
+        {{instance.content}}
+    </div>
+            <a class="btn btn-sm btn-outline-secondary" href="{{instance.update_content}}">Edit</a>
+            <div class="share">
+                <a href="https://twitter.com/home?status={{ share_string }}%20{{ request.build_absolute_uri }}" class="fa fa-twitter">
+                </a>
+        
+                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ instance.title }}&summary={{ share_string }}&source={{ request.build_absolute_uri }}" class="fa fa-linkedin">
+                    </a>
+            </div>
+</div>
+    
+</div>
+<!-- <br> {{instance.id}} -->
+<br> {% endblock content%}

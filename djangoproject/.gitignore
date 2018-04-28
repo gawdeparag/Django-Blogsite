@@ -1,0 +1,7 @@
+db.sqlite3
+manage.py
+static
+posts/migrations
+*.pyc
+djangoproject/settings.py
+djangoproject/wsgi.py

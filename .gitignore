@@ -1,0 +1,8 @@
+bin
+include
+lib
+media_cdn
+local
+static_cdn
+pip-selfcheck.json
+*.pyc
